@@ -5,10 +5,9 @@ exports.login = (req, res)=>{
 
     User.findOne({username}, (err, user)=>{
         if(err) return res.json({message: err})
-
         if(password !== user.password){
-            return res.json({message:"wrong pass"})
-        } 
+            return res.status(403).json({message:"wrong pass"})
+        }
         return res.json({user})
     })
     

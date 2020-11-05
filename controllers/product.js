@@ -18,5 +18,17 @@ exports.createProduct = (req, res)=>{
             return res.json({product})
         })
     })
-    
 }
+    exports.update = (req, res) => {
+            return res.send("update");
+          }
+    exports.remove = (req, res) => {
+            return res.send("delete")
+          }
+    exports.read = (req, res) =>{
+            const { id } = req.body
+            Product.findOne({ _id:id }).exec((err, product) => {
+              if (err) return res.json({ err })
+              return res.json({ product })
+            })
+ }
